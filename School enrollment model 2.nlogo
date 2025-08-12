@@ -1,32 +1,32 @@
 turtles-own [
-  has-food-insecurity?     ; true if family has food insecurity
-  no-transport?            ; true if no transport available
-  parents-uneducated?      ; true if parents are uneducated
-  unsafe-neighborhood?     ; true if area is unsafe
-  has-daughter-can-work?   ; true if daughter could work instead of schooling
-  distance-over-5km?       ; true if school is far
-  is-enrolled?             ; true if child is enrolled
+  has-food-insecurity?     
+  no-transport?            
+  parents-uneducated?      
+  unsafe-neighborhood?     
+  has-daughter-can-work?   
+  distance-over-5km?       
+  is-enrolled?             
 ]
 to setup
-  clear-all                              ; remove everything from world
-  create-turtles 200 [                   ; create 200 families
-    setxy random-xcor random-ycor        ; place them randomly in world
+  clear-all                              
+  create-turtles 200 [                   
+    setxy random-xcor random-ycor        
     set has-food-insecurity? (random-float 1.0 < 0.5)
     set no-transport? (random-float 1.0 < 0.5)
     set parents-uneducated? (random-float 1.0 < 0.5)
     set unsafe-neighborhood? (random-float 1.0 < 0.5)
     set has-daughter-can-work? (random-float 1.0 < 0.5)
     set distance-over-5km? (random-float 1.0 < 0.5)
-    set is-enrolled? false               ; start with no one enrolled
-    set shape "person"                   ; use a human icon for visualization
+    set is-enrolled? false               
+    set shape "person"                   
     set size 1.5
-    set color gray                       ; start with neutral color
+    set color gray                       
   ]
-  reset-ticks                            ; reset simulation clock
+  reset-ticks                            
 end
 to enrollment-decision
   ask turtles [
-    let score 1.0   ; start with base score
+    let score 1.0   
 
     ; apply penalties for each factor
     if has-food-insecurity?    [ set score score - 0.3 ]
